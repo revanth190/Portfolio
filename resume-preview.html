@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tungala Revanth — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --indigo: #4f46e5;
+      --indigo-light: #eef2ff;
+      --grad: linear-gradient(135deg, #4f46e5, #7c3aed);
+      --txt: #1c1c3a;
+      --txt-2: #4e4e72;
+      --txt-3: #9090b8;
+      --border: rgba(79,70,229,.12);
+      --bg: #f8f9fe;
+      --white: #ffffff;
+      --shadow: 0 12px 48px rgba(79,70,229,.15), 0 4px 12px rgba(0,0,0,.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--txt);
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+
+    /* ── TOP BAR ────────────────────────────────────── */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(248,249,254,.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+    }
+    .topbar-left {
+      display: flex; align-items: center; gap: 20px;
+    }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .85rem; font-weight: 600;
+      color: var(--txt-2);
+      border: 1.5px solid var(--border);
+      padding: 7px 16px; border-radius: 99px;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .back-btn:hover { color: var(--indigo); border-color: rgba(79,70,229,.3); }
+    .topbar-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--txt);
+    }
+    .topbar-title span { color: var(--indigo); }
+    .topbar-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--grad); color: #fff;
+      font-weight: 700; font-size: .88rem;
+      padding: 10px 22px; border-radius: 99px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(79,70,229,.3);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(79,70,229,.42);
+      color: #fff;
+    }
+    .btn-download svg { width: 15px; height: 15px; }
+
+    /* ── HERO BANNER ────────────────────────────────── */
+    .resume-hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 32px 36px;
+      text-align: center;
+    }
+    .rh-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2rem; font-weight: 700; color: var(--txt);
+      margin-bottom: 6px;
+    }
+    .rh-name em {
+      font-style: italic;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .rh-role {
+      font-size: .95rem; color: var(--txt-3); font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .rh-chips {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    }
+    .rh-chip {
+      font-size: .75rem; font-weight: 600;
+      background: var(--indigo-light); color: var(--indigo);
+      border: 1px solid rgba(79,70,229,.2);
+      padding: 4px 14px; border-radius: 99px;
+    }
+
+    /* ── PDF VIEWER AREA ────────────────────────────── */
+    .viewer-wrap {
+      flex: 1;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 32px 20px 48px;
+      gap: 24px;
+    }
+    .pdf-frame-outer {
+      width: 100%; max-width: 860px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .pdf-frame-bar {
+      background: var(--indigo-light);
+      padding: 10px 18px;
+      display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid rgba(79,70,229,.1);
+    }
+    .pfd-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .d1 { background: #fc5c65; }
+    .d2 { background: #ffd32a; }
+    .d3 { background: #0be881; }
+    .pfb-label {
+      font-size: .78rem; font-weight: 600; color: var(--indigo);
+      margin-left: 8px; letter-spacing: .04em;
+    }
+    .pdf-embed {
+      width: 100%;
+      height: 1000px;
+      border: none;
+      display: block;
+    }
+
+    /* Fallback for browsers without PDF embed */
+    .pdf-fallback {
+      display: none;
+      padding: 48px 32px;
+      text-align: center;
+    }
+    .pdf-fallback p { color: var(--txt-2); margin-bottom: 20px; font-size: .95rem; }
+
+    /* ── DOWNLOAD CALLOUT ───────────────────────────── */
+    .dl-callout {
+      width: 100%; max-width: 860px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      flex-wrap: wrap;
+    }
+    .dlc-left h3 {
+      font-size: 1rem; font-weight: 700; color: var(--txt); margin-bottom: 4px;
+    }
+    .dlc-left p { font-size: .875rem; color: var(--txt-2); }
+    .btn-dl-lg {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--grad); color: #fff;
+      font-weight: 700; font-size: .95rem;
+      padding: 12px 26px; border-radius: 99px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(79,70,229,.3);
+      transition: transform .25s, box-shadow .25s;
+      white-space: nowrap;
+    }
+    .btn-dl-lg:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(79,70,229,.4);
+      color: #fff;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    .resume-footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 20px 32px;
+      text-align: center;
+      font-size: .8rem; color: var(--txt-3);
+    }
+    .resume-footer a { color: var(--indigo); font-weight: 600; }
+
+    @media (max-width: 600px) {
+      .topbar { padding: 0 16px; }
+      .topbar-title { display: none; }
+      .resume-hero { padding: 28px 16px; }
+      .viewer-wrap { padding: 20px 12px 36px; }
+      .pdf-embed { height: 600px; }
+      .dl-callout { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <a href="index.html" class="back-btn">← Back to Portfolio</a>
+      <div class="topbar-title">Tungala <span>Revanth</span> — Resume</div>
+    </div>
+    <div class="topbar-actions">
+      <a href="resume.pdf" download="Tungala_Revanth_Resume.pdf" class="btn-download">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download PDF
+      </a>
+    </div>
+  </div>
+
+  <!-- HERO BANNER -->
+  <div class="resume-hero">
+    <div class="rh-name">Tungala <em>Revanth</em></div>
+    <div class="rh-role">B.Tech CSE · PVP Siddhartha Institute of Technology, Vijayawada</div>
+    <div class="rh-chips">
+      <span class="rh-chip">📧 tungalarevanth@gmail.com</span>
+      <span class="rh-chip">📞 +91 8179545489</span>
+      <span class="rh-chip">💼 Open to Opportunities</span>
+      <span class="rh-chip">🎓 CGPA 8.24</span>
+    </div>
+  </div>
+
+  <!-- PDF VIEWER -->
+  <div class="viewer-wrap">
+
+    <div class="pdf-frame-outer">
+      <div class="pdf-frame-bar">
+        <div class="pfd-dot d1"></div>
+        <div class="pfd-dot d2"></div>
+        <div class="pfd-dot d3"></div>
+        <span class="pfb-label">Tungala_Revanth_Resume.pdf</span>
+      </div>
+      <embed
+        src="resume.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitH"
+        type="application/pdf"
+        class="pdf-embed"
+        id="pdf-embed"
+      />
+      <!-- Fallback if embed not supported -->
+      <div class="pdf-fallback" id="pdf-fallback">
+        <p>Your browser doesn't support inline PDF viewing.</p>
+        <a href="resume.pdf" download="Tungala_Revanth_Resume.pdf" class="btn-dl-lg">
+          Download Resume Instead
+        </a>
+      </div>
+    </div>
+
+    <!-- Download callout -->
+    <div class="dl-callout">
+      <div class="dlc-left">
+        <h3>Want a copy?</h3>
+        <p>Download the PDF to save or share Revanth's resume.</p>
+      </div>
+      <a href="resume.pdf" download="Tungala_Revanth_Resume.pdf" class="btn-dl-lg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download Resume PDF
+      </a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="resume-footer">
+    <a href="index.html">← Back to Portfolio</a> &nbsp;·&nbsp; © 2025 Tungala Revanth
+  </div>
+
+  <script>
+    // Detect if embed failed and show fallback
+    const embed = document.getElementById('pdf-embed');
+    const fallback = document.getElementById('pdf-fallback');
+    // If on mobile or embed fails, show fallback
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      embed.style.display = 'none';
+      fallback.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
